@@ -1,4 +1,4 @@
-package gorsk
+package booker
 
 import "github.com/labstack/echo"
 

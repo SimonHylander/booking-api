@@ -1,12 +1,11 @@
 package transport
 
+/*
 import (
 	"net/http"
 	"strconv"
-
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/password"
-
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/api/password"
 	"github.com/labstack/echo"
 )
 
@@ -67,7 +66,7 @@ type changeReq struct {
 func (h *HTTP) change(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-		return gorsk.ErrBadRequest
+		return booker.ErrBadRequest
 	}
 
 	p := new(changeReq)
@@ -85,3 +84,4 @@ func (h *HTTP) change(c echo.Context) error {
 
 	return c.NoContent(http.StatusOK)
 }
+*/

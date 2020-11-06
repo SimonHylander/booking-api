@@ -1,11 +1,9 @@
 package transport
 
 import (
-	"net/http"
-
-	"github.com/ribice/gorsk/pkg/api/auth"
-
 	"github.com/labstack/echo"
+	"github.com/simonhylander/booker/pkg/api/auth"
+	"net/http"
 )
 
 // HTTP represents auth http service
@@ -45,14 +43,14 @@ func NewHTTP(svc auth.Service, e *echo.Echo, mw echo.MiddlewareFunc) {
 	//     "$ref": "#/responses/err"
 	//   "500":
 	//     "$ref": "#/responses/err"
-	e.GET("/refresh/:token", h.refresh)
+	//e.GET("/refresh/:token", h.refresh)
 
 	// swagger:route GET /me auth meReq
 	// Gets user's info from session.
 	// responses:
 	//  200: userResp
 	//  500: err
-	e.GET("/me", h.me, mw)
+	//e.GET("/me", h.me, mw)
 }
 
 type credentials struct {
@@ -62,17 +60,20 @@ type credentials struct {
 
 func (h *HTTP) login(c echo.Context) error {
 	cred := new(credentials)
+
 	if err := c.Bind(cred); err != nil {
 		return err
 	}
+
 	r, err := h.svc.Authenticate(c, cred.Username, cred.Password)
 	if err != nil {
 		return err
 	}
+
 	return c.JSON(http.StatusOK, r)
 }
 
-func (h *HTTP) refresh(c echo.Context) error {
+/*func (h *HTTP) refresh(c echo.Context) error {
 	token, err := h.svc.Refresh(c, c.Param("token"))
 	if err != nil {
 		return err
@@ -89,3 +90,4 @@ func (h *HTTP) me(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, user)
 }
+*/

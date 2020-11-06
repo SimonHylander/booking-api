@@ -3,10 +3,8 @@ package transport
 import (
 	"net/http"
 	"strconv"
-
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/user"
-
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/api/user"
 	"github.com/labstack/echo"
 )
 
@@ -109,7 +107,7 @@ func NewHTTP(svc user.Service, r *echo.Group) {
 	//     "$ref": "#/responses/err"
 	//   "500":
 	//     "$ref": "#/responses/err"
-	ur.PATCH("/:id", h.update)
+	//ur.PATCH("/:id", h.update)
 
 	// swagger:operation DELETE /v1/users/{id} users userDelete
 	// ---
@@ -152,7 +150,7 @@ type createReq struct {
 
 	CompanyID  int              `json:"company_id" validate:"required"`
 	LocationID int              `json:"location_id" validate:"required"`
-	RoleID     gorsk.AccessRole `json:"role_id" validate:"required"`
+	RoleID     booker.AccessRole `json:"role_id" validate:"required"`
 }
 
 func (h HTTP) create(c echo.Context) error {
@@ -167,19 +165,19 @@ func (h HTTP) create(c echo.Context) error {
 		return ErrPasswordsNotMaching
 	}
 
-	if r.RoleID < gorsk.SuperAdminRole || r.RoleID > gorsk.UserRole {
-		return gorsk.ErrBadRequest
+	if r.RoleID < booker.SuperAdminRole || r.RoleID > booker.UserRole {
+		return booker.ErrBadRequest
 	}
 
-	usr, err := h.svc.Create(c, gorsk.User{
+	usr, err := h.svc.Create(c, booker.User{
 		Username:   r.Username,
 		Password:   r.Password,
 		Email:      r.Email,
 		FirstName:  r.FirstName,
 		LastName:   r.LastName,
-		CompanyID:  r.CompanyID,
+		/*CompanyID:  r.CompanyID,
 		LocationID: r.LocationID,
-		RoleID:     r.RoleID,
+		RoleID:     r.RoleID,*/
 	})
 
 	if err != nil {
@@ -190,12 +188,12 @@ func (h HTTP) create(c echo.Context) error {
 }
 
 type listResponse struct {
-	Users []gorsk.User `json:"users"`
+	Users []booker.User `json:"users"`
 	Page  int          `json:"page"`
 }
 
 func (h HTTP) list(c echo.Context) error {
-	var req gorsk.PaginationReq
+	var req booker.PaginationReq
 	if err := c.Bind(&req); err != nil {
 		return err
 	}
@@ -212,7 +210,7 @@ func (h HTTP) list(c echo.Context) error {
 func (h HTTP) view(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-		return gorsk.ErrBadRequest
+		return booker.ErrBadRequest
 	}
 
 	result, err := h.svc.View(c, id)
@@ -225,7 +223,7 @@ func (h HTTP) view(c echo.Context) error {
 
 // User update request
 // swagger:model userUpdate
-type updateReq struct {
+/*type updateReq struct {
 	ID        int    `json:"-"`
 	FirstName string `json:"first_name,omitempty" validate:"omitempty,min=2"`
 	LastName  string `json:"last_name,omitempty" validate:"omitempty,min=2"`
@@ -237,7 +235,7 @@ type updateReq struct {
 func (h HTTP) update(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-		return gorsk.ErrBadRequest
+		return booker.ErrBadRequest
 	}
 
 	req := new(updateReq)
@@ -259,12 +257,12 @@ func (h HTTP) update(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, usr)
-}
+}*/
 
 func (h HTTP) delete(c echo.Context) error {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-		return gorsk.ErrBadRequest
+		return booker.ErrBadRequest
 	}
 
 	if err := h.svc.Delete(c, id); err != nil {

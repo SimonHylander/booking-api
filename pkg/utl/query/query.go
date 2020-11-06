@@ -1,9 +1,8 @@
 package query
 
-import (
+/*import (
 	"github.com/labstack/echo"
-
-	"github.com/ribice/gorsk"
+	"github.com/simonhylander/booker"
 )
 
 // List prepares data for list queries
@@ -19,3 +18,4 @@ func List(u gorsk.AuthUser) (*gorsk.ListQuery, error) {
 		return nil, echo.ErrForbidden
 	}
 }
+*/

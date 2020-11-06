@@ -2,7 +2,6 @@ package password
 
 import (
 	"net/http"
-
 	"github.com/labstack/echo"
 )
 
@@ -13,7 +12,7 @@ var (
 )
 
 // Change changes user's password
-func (p Password) Change(c echo.Context, userID int, oldPass, newPass string) error {
+/*func (p Password) Change(c echo.Context, userID int, oldPass, newPass string) error {
 	if err := p.rbac.EnforceUser(c, userID); err != nil {
 		return err
 	}
@@ -34,4 +33,4 @@ func (p Password) Change(c echo.Context, userID int, oldPass, newPass string) er
 	u.ChangePassword(p.sec.Hash(newPass))
 
 	return p.udb.Update(p.db, u)
-}
+}*/

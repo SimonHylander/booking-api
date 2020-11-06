@@ -3,9 +3,9 @@ package rbac_test
 import (
 	"testing"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/utl/mock"
-	"github.com/ribice/gorsk/pkg/utl/rbac"
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/utl/mock"
+	"github.com/simonhylander/booker/pkg/utl/rbac"
 
 	"github.com/labstack/echo"
 

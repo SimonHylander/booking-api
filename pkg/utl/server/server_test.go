@@ -3,7 +3,7 @@ package server_test
 import (
 	"testing"
 
-	"github.com/ribice/gorsk/pkg/utl/server"
+	"github.com/simonhylander/booker/pkg/utl/server"
 )
 
 // Improve tests

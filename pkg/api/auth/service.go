@@ -1,57 +1,53 @@
 package auth
 
 import (
-	"github.com/go-pg/pg/v9"
-	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
-
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/auth/platform/pgsql"
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/api/auth/platform/neo4j"
 )
 
 // New creates new iam service
-func New(db *pg.DB, udb UserDB, j TokenGenerator, sec Securer, rbac RBAC) Auth {
+func New(udb UserDB, tokenGenerator TokenGenerator, securer Securer, rbac RBAC) Auth {
 	return Auth{
-		db:   db,
-		udb:  udb,
-		tg:   j,
-		sec:  sec,
-		rbac: rbac,
+		udb:            udb,
+		tokenGenerator: tokenGenerator,
+		securer:        securer,
+		rbac:           rbac,
 	}
 }
 
 // Initialize initializes auth application service
-func Initialize(db *pg.DB, j TokenGenerator, sec Securer, rbac RBAC) Auth {
-	return New(db, pgsql.User{}, j, sec, rbac)
+func Initialize(tokenGenerator TokenGenerator, sec Securer, rbac RBAC) Auth {
+	return New(neo4j.User{}, tokenGenerator, sec, rbac)
 }
 
 // Service represents auth service interface
 type Service interface {
-	Authenticate(echo.Context, string, string) (gorsk.AuthToken, error)
-	Refresh(echo.Context, string) (string, error)
-	Me(echo.Context) (gorsk.User, error)
+	Authenticate(echo.Context, string, string) (booker.AuthToken, error)
+	//Refresh(echo.Context, string) (string, error)
+	//Me(echo.Context) (booker.User, error)
 }
 
 // Auth represents auth application service
 type Auth struct {
-	db   *pg.DB
-	udb  UserDB
-	tg   TokenGenerator
-	sec  Securer
-	rbac RBAC
+	//db   *pg.DB
+	udb            UserDB
+	tokenGenerator TokenGenerator
+	securer        Securer
+	rbac           RBAC
 }
 
 // UserDB represents user repository interface
 type UserDB interface {
-	View(orm.DB, int) (gorsk.User, error)
-	FindByUsername(orm.DB, string) (gorsk.User, error)
-	FindByToken(orm.DB, string) (gorsk.User, error)
-	Update(orm.DB, gorsk.User) error
+	/*View(orm.DB, int) (booker.User, error)
+	FindByToken(orm.DB, string) (booker.User, error)*/
+	FindByUsername(string) (booker.User, error)
+	Update(booker.User) error
 }
 
 // TokenGenerator represents token generator (jwt) interface
 type TokenGenerator interface {
-	GenerateToken(gorsk.User) (string, error)
+	GenerateToken(booker.User) (string, error)
 }
 
 // Securer represents security interface
@@ -62,5 +58,5 @@ type Securer interface {
 
 // RBAC represents role-based-access-control interface
 type RBAC interface {
-	User(echo.Context) gorsk.AuthUser
+	User(echo.Context) booker.AuthUser
 }

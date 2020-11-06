@@ -3,14 +3,14 @@ package password_test
 import (
 	"testing"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/password"
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/api/password"
 
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk/pkg/utl/mock"
-	"github.com/ribice/gorsk/pkg/utl/mock/mockdb"
+	"github.com/simonhylander/booker/pkg/utl/mock"
+	"github.com/simonhylander/booker/pkg/utl/mock/mockdb"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -1,15 +1,15 @@
 package user_test
-
+/*
 import (
 	"testing"
 
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/user"
-	"github.com/ribice/gorsk/pkg/utl/mock"
-	"github.com/ribice/gorsk/pkg/utl/mock/mockdb"
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/api/user"
+	"github.com/simonhylander/booker/pkg/utl/mock"
+	"github.com/simonhylander/booker/pkg/utl/mock/mockdb"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -483,4 +483,4 @@ func TestInitialize(t *testing.T) {
 	if u == nil {
 		t.Error("User service not initialized")
 	}
-}
+}*/

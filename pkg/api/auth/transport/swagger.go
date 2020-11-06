@@ -1,7 +1,7 @@
 package transport
 
 import (
-	"github.com/ribice/gorsk"
+	"github.com/simonhylander/booker"
 )
 
 // Login request
@@ -16,7 +16,7 @@ type swaggLoginReq struct {
 type swaggLoginResp struct {
 	// in:body
 	Body struct {
-		*gorsk.AuthToken
+		*booker.AuthToken
 	}
 }
 
@@ -25,6 +25,6 @@ type swaggLoginResp struct {
 type swaggRefreshResp struct {
 	// in:body
 	Body struct {
-		*gorsk.RefreshToken
+		*booker.RefreshToken
 	}
 }

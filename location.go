@@ -1,4 +1,4 @@
-package gorsk
+package booker
 
 // Location represents company location model
 type Location struct {

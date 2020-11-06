@@ -1,16 +1,14 @@
 package password
 
-import (
+/*import (
 	"time"
-
 	"github.com/labstack/echo"
-
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/password"
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/api/password"
 )
 
 // New creates new password logging service
-func New(svc password.Service, logger gorsk.Logger) *LogService {
+func New(svc password.Service, logger booker.Logger) *LogService {
 	return &LogService{
 		Service: svc,
 		logger:  logger,
@@ -20,7 +18,7 @@ func New(svc password.Service, logger gorsk.Logger) *LogService {
 // LogService represents password logging service
 type LogService struct {
 	password.Service
-	logger gorsk.Logger
+	logger booker.Logger
 }
 
 const name = "password"
@@ -38,4 +36,4 @@ func (ls *LogService) Change(c echo.Context, id int, oldPass, newPass string) (e
 		)
 	}(time.Now())
 	return ls.Service.Change(c, id, oldPass, newPass)
-}
+}*/

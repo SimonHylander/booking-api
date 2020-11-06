@@ -1,6 +1,7 @@
 package pgsql
 
 import (
+	"github.com/go-pg/pg"
 	"net/http"
 	"strings"
 
@@ -9,7 +10,7 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/gorsk"
+	"github.com/simonhylander/booker"
 )
 
 // User represents the client for user table

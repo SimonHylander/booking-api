@@ -1,4 +1,4 @@
-package gorsk
+package booker
 
 // Company represents company model
 type Company struct {

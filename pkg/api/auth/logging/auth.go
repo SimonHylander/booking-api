@@ -1,16 +1,13 @@
 package auth
 
 import (
-	"time"
-
 	"github.com/labstack/echo"
-
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/auth"
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/api/auth"
 )
 
 // New creates new auth logging service
-func New(svc auth.Service, logger gorsk.Logger) *LogService {
+func New(svc auth.Service, logger booker.Logger) *LogService {
 	return &LogService{
 		Service: svc,
 		logger:  logger,
@@ -20,14 +17,14 @@ func New(svc auth.Service, logger gorsk.Logger) *LogService {
 // LogService represents auth logging service
 type LogService struct {
 	auth.Service
-	logger gorsk.Logger
+	logger booker.Logger
 }
 
 const name = "auth"
 
 // Authenticate logging
-func (ls *LogService) Authenticate(c echo.Context, user, password string) (resp gorsk.AuthToken, err error) {
-	defer func(begin time.Time) {
+func (ls *LogService) Authenticate(c echo.Context, username, password string) (resp booker.AuthToken, err error) {
+	/*defer func(begin time.Time) {
 		ls.logger.Log(
 			c,
 			name, "Authenticate request", err,
@@ -36,12 +33,13 @@ func (ls *LogService) Authenticate(c echo.Context, user, password string) (resp 
 				"took": time.Since(begin),
 			},
 		)
-	}(time.Now())
-	return ls.Service.Authenticate(c, user, password)
+	}(time.Now())*/
+
+	return ls.Service.Authenticate(c, username, password)
 }
 
 // Refresh logging
-func (ls *LogService) Refresh(c echo.Context, req string) (token string, err error) {
+/*func (ls *LogService) Refresh(c echo.Context, req string) (token string, err error) {
 	defer func(begin time.Time) {
 		ls.logger.Log(
 			c,
@@ -57,7 +55,7 @@ func (ls *LogService) Refresh(c echo.Context, req string) (token string, err err
 }
 
 // Me logging
-func (ls *LogService) Me(c echo.Context) (resp gorsk.User, err error) {
+func (ls *LogService) Me(c echo.Context) (resp booker.User, err error) {
 	defer func(begin time.Time) {
 		ls.logger.Log(
 			c,
@@ -69,4 +67,4 @@ func (ls *LogService) Me(c echo.Context) (resp gorsk.User, err error) {
 		)
 	}(time.Now())
 	return ls.Service.Me(c)
-}
+}*/

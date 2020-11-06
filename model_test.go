@@ -1,15 +1,14 @@
-package gorsk_test
+package booker_test
 
 import (
 	"context"
 	"testing"
-
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/utl/mock"
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/utl/mock"
 )
 
 func TestBeforeInsert(t *testing.T) {
-	base := &gorsk.Base{
+	base := &booking.Base{
 		ID: 1,
 	}
 	base.BeforeInsert(context.TODO())
@@ -22,7 +21,7 @@ func TestBeforeInsert(t *testing.T) {
 }
 
 func TestBeforeUpdate(t *testing.T) {
-	base := &gorsk.Base{
+	base := &booking.Base{
 		ID:        1,
 		CreatedAt: mock.TestTime(2000),
 	}
@@ -34,7 +33,7 @@ func TestBeforeUpdate(t *testing.T) {
 }
 
 func TestPaginationTransform(t *testing.T) {
-	p := &gorsk.PaginationReq{
+	p := &booking.PaginationReq{
 		Limit: 5000, Page: 5,
 	}
 
@@ -54,5 +53,4 @@ func TestPaginationTransform(t *testing.T) {
 	if newPag.Limit != 100 {
 		t.Error("Min limit not set")
 	}
-
 }

@@ -1,12 +1,9 @@
 package password
 
-import (
-	"github.com/go-pg/pg/v9"
-	"github.com/go-pg/pg/v9/orm"
+/*import (
+	"github.com/go-pg/pg"
+	"github.com/go-pg/pg/orm"
 	"github.com/labstack/echo"
-
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/api/password/platform/pgsql"
 )
 
 // Service represents password application interface
@@ -54,3 +51,4 @@ type Securer interface {
 type RBAC interface {
 	EnforceUser(echo.Context, int) error
 }
+*/

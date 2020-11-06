@@ -4,13 +4,11 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
-
-	"github.com/ribice/gorsk"
-	"github.com/ribice/gorsk/pkg/utl/middleware/auth"
+	"github.com/simonhylander/booker"
+	"github.com/simonhylander/booker/pkg/utl/middleware/auth"
 )
 
 func echoHandler(mw ...echo.MiddlewareFunc) *echo.Echo {
@@ -32,7 +30,7 @@ type tokenParser struct {
 
 func (t tokenParser) ParseToken(s string) (*jwt.Token, error) {
 	if s == "" {
-		return nil, gorsk.ErrGeneric
+		return nil, booker.ErrGeneric
 	}
 	return &jwt.Token{
 		Raw:    "abcd",

@@ -1,7 +1,7 @@
 package transport
 
 import (
-	"github.com/ribice/gorsk"
+	"github.com/simonhylander/booker"
 )
 
 // User model response
@@ -9,7 +9,7 @@ import (
 type swaggUserResponse struct {
 	// in:body
 	Body struct {
-		*gorsk.User
+		*booker.User
 	}
 }
 
@@ -18,7 +18,7 @@ type swaggUserResponse struct {
 type swaggUserListResponse struct {
 	// in:body
 	Body struct {
-		Users []gorsk.User `json:"users"`
+		Users []booker.User `json:"users"`
 		Page  int          `json:"page"`
 	}
 }

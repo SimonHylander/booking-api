@@ -1,11 +1,11 @@
-package user
+package appointment
 
 import (
 	"github.com/labstack/echo"
 	"github.com/simonhylander/booker"
 )
 
-// Service represents user application interface
+// Service represents appointment application interface
 type Service interface {
 	Create(echo.Context, booker.User) (booker.User, error)
 	List(echo.Context, booker.Pagination) ([]booker.User, error)
@@ -26,25 +26,9 @@ func Initialize(rbac RBAC, sec Securer) *User {
 
 // User represents user application service
 type User struct {
-	//udb  UDB
+	udb  UDB
 	rbac RBAC
 	sec  Securer
-}
-
-func (u User) Create(echo.Context, booker.User) (booker.User, error) {
-	panic("implement me")
-}
-
-func (u User) List(echo.Context, booker.Pagination) ([]booker.User, error) {
-	panic("implement me")
-}
-
-func (u User) View(echo.Context, int) (booker.User, error) {
-	panic("implement me")
-}
-
-func (u User) Delete(echo.Context, int) error {
-	panic("implement me")
 }
 
 // Securer represents security interface
@@ -63,8 +47,25 @@ type UDB interface {
 
 // RBAC represents role-based-access-control interface
 type RBAC interface {
-	User(echo.Context) booker.AuthUser 
+	User(echo.Context) booker.AuthUser
 	EnforceUser(echo.Context, int) error
 	AccountCreate(echo.Context, booker.AccessRole, int, int) error
 	IsLowerRole(echo.Context, booker.AccessRole) error
+}
+
+
+func (u User) Create(echo.Context, booker.User) (booker.User, error) {
+	panic("implement me")
+}
+
+func (u User) List(echo.Context, booker.Pagination) ([]booker.User, error) {
+	panic("implement me")
+}
+
+func (u User) View(echo.Context, int) (booker.User, error) {
+	panic("implement me")
+}
+
+func (u User) Delete(echo.Context, int) error {
+	panic("implement me")
 }

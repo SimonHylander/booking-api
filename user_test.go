@@ -1,9 +1,8 @@
-package gorsk_test
+package booker_test
 
 import (
 	"testing"
-
-	"github.com/ribice/gorsk"
+	"github.com/simonhylander/booker"
 )
 
 func TestChangePassword(t *testing.T) {

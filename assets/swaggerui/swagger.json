@@ -345,12 +345,12 @@
       "description": "AccessRole represents access role type",
       "type": "integer",
       "format": "int64",
-      "x-go-package": "github.com/ribice/gorsk/pkg/utl/model"
+      "x-go-package": "github.com/simonhylander/booker/pkg/utl/model"
     },
     "HTTP": {
       "description": "HTTP represents password http transport service",
       "type": "object",
-      "x-go-package": "github.com/ribice/gorsk/pkg/api/password/transport"
+      "x-go-package": "github.com/simonhylander/booker/pkg/api/password/transport"
     },
     "Role": {
       "description": "Role model",
@@ -367,7 +367,7 @@
           "x-go-name": "Name"
         }
       },
-      "x-go-package": "github.com/ribice/gorsk/pkg/utl/model"
+      "x-go-package": "github.com/simonhylander/booker/pkg/utl/model"
     },
     "User": {
       "description": "User represents user domain model",
@@ -449,7 +449,7 @@
           "x-go-name": "Username"
         }
       },
-      "x-go-package": "github.com/ribice/gorsk/pkg/utl/model"
+      "x-go-package": "github.com/simonhylander/booker/pkg/utl/model"
     },
     "credentials": {
       "type": "object",
@@ -463,7 +463,7 @@
           "x-go-name": "Username"
         }
       },
-      "x-go-package": "github.com/ribice/gorsk/pkg/api/auth/transport"
+      "x-go-package": "github.com/simonhylander/booker/pkg/api/auth/transport"
     },
     "listResponse": {
       "type": "object",
@@ -481,7 +481,7 @@
           "x-go-name": "Users"
         }
       },
-      "x-go-package": "github.com/ribice/gorsk/pkg/api/user/transport"
+      "x-go-package": "github.com/simonhylander/booker/pkg/api/user/transport"
     },
     "pwChange": {
       "description": "Password change request",
@@ -501,7 +501,7 @@
         }
       },
       "x-go-name": "changeReq",
-      "x-go-package": "github.com/ribice/gorsk/pkg/api/password/transport"
+      "x-go-package": "github.com/simonhylander/booker/pkg/api/password/transport"
     },
     "userCreate": {
       "description": "User create request",
@@ -546,7 +546,7 @@
         }
       },
       "x-go-name": "createReq",
-      "x-go-package": "github.com/ribice/gorsk/pkg/api/user/transport"
+      "x-go-package": "github.com/simonhylander/booker/pkg/api/user/transport"
     },
     "userUpdate": {
       "description": "User update request",
@@ -574,7 +574,7 @@
         }
       },
       "x-go-name": "updateReq",
-      "x-go-package": "github.com/ribice/gorsk/pkg/api/user/transport"
+      "x-go-package": "github.com/simonhylander/booker/pkg/api/user/transport"
     }
   },
   "responses": {

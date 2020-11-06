@@ -1,9 +1,9 @@
 package pgsql
 
-import (
+/*import (
 	"github.com/go-pg/pg/v9/orm"
 
-	"github.com/ribice/gorsk"
+	"github.com/simonhylander/booker"
 )
 
 // User represents the client for user table
@@ -20,3 +20,4 @@ func (u User) View(db orm.DB, id int) (gorsk.User, error) {
 func (u User) Update(db orm.DB, user gorsk.User) error {
 	return db.Update(&user)
 }
+*/
